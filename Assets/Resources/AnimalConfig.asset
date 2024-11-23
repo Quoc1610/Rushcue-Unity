@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c126cd6fa0a754646baa172d8698f296, type: 3}
+  m_Name: AnimalConfig
+  m_EditorClassIdentifier: 
+  animalList:
+  - animalPrefab: {fileID: 6775350555843403501, guid: 334322c1de68acd44a764fc99dd7d063, type: 3}
+    posCaught: 0
+  - animalPrefab: {fileID: 4812416359557474035, guid: 0ca57f073b5e9104a99be6a39f2eee2a, type: 3}
+    posCaught: 1
