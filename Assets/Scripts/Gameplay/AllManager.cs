@@ -9,6 +9,9 @@ public class AllManager : MonoBehaviour
     public List<Transform> lsPosSpawn = new List<Transform>();
     public AnimalConfig animalConfig;
     public AnimalManager animalManager;
+    public WaveManager waveManager;
+    public GameObject wavePrefab;
+    public Transform waveSpawnPos;
     public int countAnimal;
     public static AllManager Instance()
     {
@@ -26,6 +29,9 @@ public class AllManager : MonoBehaviour
         countAnimal = 0;
         animalConfig = Resources.Load<AnimalConfig>("AnimalConfig");
         this.animalManager = new AnimalManager();
+        this.waveManager = new WaveManager();
+        waveManager.SetupTransform(wavePrefab.transform);
+        waveManager.SpawnWave(waveSpawnPos);
         animalManager.animalConfig = animalConfig;
         
     }
@@ -34,13 +40,15 @@ public class AllManager : MonoBehaviour
     {
        
         StartCoroutine(SpawnAnimals());
+
     }
     IEnumerator SpawnAnimals()
     {
         countAnimal++;
         if (countAnimal == lsPosSpawn.Count) yield break;
         animalManager.SetupTransform(animalConfig.animalList[countAnimal%2].animalPrefab.transform);
-        yield return new WaitForSeconds(1);
+       
+        yield return new WaitForSeconds(.5f);
 
         animalManager.SpawnAnimal(countAnimal, lsPosSpawn[countAnimal]);
 
@@ -49,6 +57,11 @@ public class AllManager : MonoBehaviour
     private void Update()
     {
         animalManager.MyUpdate();
+        waveManager.MyUpdate();
+        if (countAnimal == lsPosSpawn.Count)
+        {
+            waveManager.StartWave();
+        }
     }
     public void CatchAnimal(GameObject goAnimal)
     {
