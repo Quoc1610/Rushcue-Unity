@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Animal
   - Wave
+  - Win
   layers:
   - Default
   - TransparentFX

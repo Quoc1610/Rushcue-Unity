@@ -20,12 +20,13 @@ public class UILoading : MonoBehaviour
     {
         txtLoading.text = "Done!";
         UIManager.Instance().uiMainMenu.gameObject.SetActive(true);
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
         this.gameObject.SetActive(false);
 
     }
     private void Update()
     {
+
         sliderLoad.value += Time.deltaTime;
     }
     public void OnChangeValueSlider()

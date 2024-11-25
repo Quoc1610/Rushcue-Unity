@@ -20,7 +20,6 @@ public class AnimalInfo
         //jiggle a little bit
         if(isCaught)
         {
-            
             agent.SetDestination(pos.position);
             if (agent.remainingDistance <= .8f*index)
             {

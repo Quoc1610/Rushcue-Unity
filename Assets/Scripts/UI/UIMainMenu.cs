@@ -25,7 +25,11 @@ public class UIMainMenu : MonoBehaviour
     }
     public void OnPlay_Clicked()
     {
-        UIManager.Instance().OnLevelWasLoaded("GamePlay");
+        UIManager.Instance().OnScene("GamePlay");
+        
+        UIManager.Instance().uiGameplay.gameObject.SetActive(true);
+        
+        UIManager.Instance().OnPause(0);
         this.gameObject.SetActive(false);
 
 
@@ -50,6 +54,7 @@ public class UIMainMenu : MonoBehaviour
             UIManager.Instance().saveData.coins -= UIManager.Instance().saveData.defaultPrice;
             UIManager.Instance().saveData.speedLvl++;
             txtCoin.text = UIManager.Instance().saveData.coins.ToString();
+            SaveManager.SaveData(UIManager.Instance().saveData);
             CheckIfCanBuy();
         }
     }

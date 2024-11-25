@@ -5,22 +5,16 @@ using UnityEngine;
 public class WaveInfo
 {
     public float speed;
-    public bool isMove;
     public Transform waveObj;
     public WaveInfo(float speed)
     {
         this.speed = speed;
-        this.isMove = false;
-        this.waveObj = waveObj;
     }
     
     public void Move()
     {
-        if (isMove)
-        {
-            
-            waveObj.Translate(Vector3.forward * speed * Time.deltaTime);
-        }
+
+        waveObj.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
 }
@@ -42,10 +36,7 @@ public class WaveManager
             posSpawn.position, rotation);
         waveInfo.waveObj = wave;
     }
-    public void StartWave()
-    {
-        waveInfo.isMove = true;
-    }
+
     public void MyUpdate()
     {
         waveInfo.Move();

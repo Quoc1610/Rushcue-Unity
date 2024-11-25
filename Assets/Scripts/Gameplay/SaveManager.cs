@@ -7,33 +7,23 @@ public static class SaveManager
 {
     public static void SaveData(SaveData data)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/save.data";
-        FileStream stream = new FileStream(path, FileMode.Create);
-        SaveData saveData = new SaveData(data);
-        formatter.Serialize(stream, data);
-        stream.Close();
+        string path = Application.persistentDataPath + "/save.json";
+        string jsonData = JsonUtility.ToJson(data);
+        File.WriteAllText(path, jsonData);
     }
+
     public static SaveData LoadData()
     {
-        string path = Application.persistentDataPath + "/save.data";
-        if (File.Exists(path)) 
+        string path = Application.persistentDataPath + "/save.json";
+        if (File.Exists(path))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
-            SaveData data = formatter.Deserialize(stream) as SaveData;
-            stream.Close();
-            return data;
+            string jsonData = File.ReadAllText(path);
+            return JsonUtility.FromJson<SaveData>(jsonData);
         }
         else
         {
-            SaveData defaultData = new SaveData();
-            return defaultData;
+            return new SaveData(); // Default data
         }
     }
 
-    internal static void SaveData(GameplayManager gameplayManager)
-    {
-        throw new NotImplementedException();
-    }
 }

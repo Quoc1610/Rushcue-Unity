@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
 {
-    public int coins = 0;
-    public int speedlvl = 0;
+    //public int coins = 0;
+    //public int speedlvl = 0;
 
-    public void SaveData()
-    {
-        SaveManager.SaveData(this);
-    }
-    public void LoadData()
-    {
-        SaveData data = SaveManager.LoadData();
-        coins = data.coins;
-        speedlvl = data.speedLvl;
-    }
+    //public void SaveData()
+    //{
+    //    SaveManager.SaveData(this);
+    //}
+    //public void LoadData()
+    //{
+    //    SaveData data = SaveManager.LoadData();
+    //    coins = data.coins;
+    //    speedlvl = data.speedLvl;
+    //}
 }

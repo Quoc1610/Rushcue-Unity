@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class FloatingJoystick : Joystick
 {
-    protected override void Start()
+    public void Start()
     {
         base.Start();
         background.gameObject.SetActive(false);

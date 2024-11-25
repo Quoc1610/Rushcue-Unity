@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,6 +13,11 @@ public class AllManager : MonoBehaviour
     public WaveManager waveManager;
     public GameObject wavePrefab;
     public Transform waveSpawnPos;
+    public CinemachineVirtualCamera vcam1;
+    public CinemachineVirtualCamera vcam2;
+    public List<GameObject> lsCaughtAnimal = new List<GameObject>();
+
+    public bool IsCaughtAll;
     public int countAnimal;
     public static AllManager Instance()
     {
@@ -27,6 +33,11 @@ public class AllManager : MonoBehaviour
     {
         Debug.Log("Start");
         countAnimal = 0;
+        vcam1.Priority = 1;
+        vcam2.Priority = 0;
+
+        lsCaughtAnimal.Clear();
+        IsCaughtAll = false;
         animalConfig = Resources.Load<AnimalConfig>("AnimalConfig");
         this.animalManager = new AnimalManager();
         this.waveManager = new WaveManager();
@@ -45,12 +56,16 @@ public class AllManager : MonoBehaviour
     IEnumerator SpawnAnimals()
     {
         countAnimal++;
-        if (countAnimal == lsPosSpawn.Count) yield break;
+        if (countAnimal == lsPosSpawn.Count) {
+            UIManager.Instance().uiGameplay.OnSetUp();
+            yield break;
+        }
         animalManager.SetupTransform(animalConfig.animalList[countAnimal%2].animalPrefab.transform);
        
         yield return new WaitForSeconds(.5f);
 
         animalManager.SpawnAnimal(countAnimal, lsPosSpawn[countAnimal]);
+
 
         StartCoroutine(SpawnAnimals());
     }
@@ -58,9 +73,21 @@ public class AllManager : MonoBehaviour
     {
         animalManager.MyUpdate();
         waveManager.MyUpdate();
-        if (countAnimal == lsPosSpawn.Count)
+    }
+   
+    public void CheckIfWin()
+    {
+        int countCaught = 0;
+        while (true)
         {
-            waveManager.StartWave();
+            if (animalManager.animalInfoList[countCaught].isCaught)
+            {
+                countCaught++;
+            }
+            else
+            {
+                break;
+            }
         }
     }
     public void CatchAnimal(GameObject goAnimal)
@@ -70,9 +97,30 @@ public class AllManager : MonoBehaviour
         {
             if (animalManager.animalInfoList[i].animalObj.gameObject == goAnimal)
             {
+                goAnimal.GetComponent<BoxCollider>().enabled = false;
                 animalManager.animalInfoList[i].isCaught = true;
+                lsCaughtAnimal.Add(goAnimal);
+                PlayerManager.Instance().scanner.SetActive(false);
+                if (i==countAnimal - 1)
+                {
+                    Debug.Log("Caught");
+                    IsCaughtAll = true;
+                }
                 break;
             }
+        }
+    }
+    public void ChangeCamera(int a)
+    {
+        if(a == 1)
+        {
+            vcam1.Priority = 0;
+            vcam2.Priority = 1;
+        }
+        else
+        {
+            vcam1.Priority = 1;
+            vcam2.Priority = 0;
         }
     }
     private void LateUpdate()

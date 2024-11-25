@@ -8,7 +8,11 @@ public class UIManager : MonoBehaviour
     private static UIManager _instance;
     public UILoading uiLoading;
     public UIMainMenu uiMainMenu;
+    public UIResult uiResult;
+    public UIGameplay uiGameplay;
     public SaveData saveData;
+    public int coinAnimal, coinDisRun;
+    
     public static UIManager Instance()
     {
         if (_instance == null)
@@ -24,14 +28,36 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         saveData = SaveManager.LoadData();
-        
+        Debug.Log(saveData.coins);
+       
+        coinAnimal = 0;
+        coinDisRun = 0;
         uiLoading.OnSetUp();
         uiMainMenu.OnSetUp();
         uiMainMenu.gameObject.SetActive(false);
     }
-    public void OnLevelWasLoaded(string level)
+    public void OnScene(string level)
     {
         SceneManager.LoadScene(level);
+    }
+    public void OnReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public int CalculateCoin()
+    {
+        
+        coinAnimal = AllManager.Instance().lsCaughtAnimal.Count * 50;
+        coinDisRun = (int)PlayerManager.Instance().disRun * 5;
+        return coinAnimal + coinDisRun;
+    }
+    public void OnPause(int a)
+    {
+        if(a == 0)
+        {
+            Time.timeScale = 1;
+        }
+        else Time.timeScale = 0;
     }
     public void OnClose_Clicked()
     {
