@@ -932,6 +932,7 @@ MonoBehaviour:
   animalConfig: {fileID: 11400000, guid: 854b709f4a4caec42abbe1e8dbadaaa1, type: 2}
   wavePrefab: {fileID: 7584158100946847193, guid: 075df76022dc20c4b8a63dfb90916421, type: 3}
   waveSpawnPos: {fileID: 2101655814}
+  goWin: {fileID: 1108913556}
   vcam1: {fileID: 998325252}
   vcam2: {fileID: 261366000}
   mapConfig: {fileID: 11400000, guid: 2cc5d72b3710f1745b01c54957e7898f, type: 2}
@@ -2861,7 +2862,27 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 121032277}
     m_Modifications:
+    - target: {fileID: 643556355478379686, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 775631322653469862, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1295340984784666248, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195357555539028654, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869691712015985315, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582784016972421639, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2913,6 +2934,18 @@ PrefabInstance:
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 3854c511b8432534ba613f111e1941a8, type: 2}
+    - target: {fileID: 7053371672657708522, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257926194198038850, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752824500475169564, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8309896732484912039, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}
       propertyPath: m_Name
       value: BeachMap1
@@ -2922,7 +2955,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -5255927096838284666, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}

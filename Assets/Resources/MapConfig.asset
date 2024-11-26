@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MapConfig
   m_EditorClassIdentifier: 
   goMapWay:
-  - {fileID: 8309896732484912039, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}
+  - {fileID: 8309896732484912039, guid: 5133a160a8484ac4e92bc3fa70eb66e2, type: 3}
   lsMapElement:
   - lsObstacles:
     - {fileID: 3294435270369087206, guid: 7982fc080c354a942b3561f445489e11, type: 3}

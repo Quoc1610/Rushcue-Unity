@@ -43,7 +43,7 @@ public class UIMainMenu : MonoBehaviour
     }
     public void CheckIfCanBuy()
     {
-        if (UIManager.Instance().saveData.coins >= UIManager.Instance().saveData.defaultPrice)
+        if (UIManager.Instance().saveData.coins >= price)
         {
             btnSpeed.interactable = true;
             goCanBuy.SetActive(true);

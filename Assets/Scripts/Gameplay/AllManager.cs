@@ -1,18 +1,22 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class AllManager : MonoBehaviour
 {
     private static AllManager _instance;
     public List<Transform> lsPosSpawn = new List<Transform>();
+    public List<Vector3> lsV3PosSpawn = new List<Vector3>();
     public AnimalConfig animalConfig;
     public AnimalManager animalManager;
     public WaveManager waveManager;
     public GameObject wavePrefab;
     public Transform waveSpawnPos;
+    public GameObject goWin;
     public CinemachineVirtualCamera vcam1;
     public CinemachineVirtualCamera vcam2;
     public MapConfig mapConfig;
@@ -38,7 +42,13 @@ public class AllManager : MonoBehaviour
         countAnimal = 0;
         vcam1.Priority = 1;
         vcam2.Priority = 0;
+
         lsCaughtAnimal.Clear();
+        foreach (var a in lsPosSpawn)
+        {
+            lsV3PosSpawn.Add(a.position);
+        }
+
         IsCaughtAll = false;
         this.animalManager = new AnimalManager();
         this.waveManager = new WaveManager();
@@ -51,14 +61,14 @@ public class AllManager : MonoBehaviour
     private void Start()
     {
 
-        StartCoroutine(SpawnAnimals());
-        SpawnMap(0, 0);
+        
+        SpawnMap(0, 1);
 
     }
     IEnumerator SpawnAnimals()
     {
         countAnimal++;
-        if (countAnimal == lsPosSpawn.Count)
+        if (countAnimal == lsV3PosSpawn.Count)
         {
             UIManager.Instance().uiGameplay.OnSetUp();
             yield break;
@@ -67,7 +77,7 @@ public class AllManager : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
 
-        animalManager.SpawnAnimal(countAnimal, lsPosSpawn[countAnimal]);
+        animalManager.SpawnAnimal(countAnimal, lsV3PosSpawn[countAnimal]);
 
 
         StartCoroutine(SpawnAnimals());
@@ -128,56 +138,98 @@ public class AllManager : MonoBehaviour
     }
     public void SpawnMap(int mapIndex, int difficulty)
     {
-        foreach(GameObject go in lsMap)
+        foreach (GameObject go in lsMap)
         {
             Destroy(go);
         }
         lsMap.Clear();
 
-        if (difficulty == 0)
+        if (difficulty % 2 == 0)
         {
-            GenTile(4,mapIndex);
+            goWin.transform.localPosition = new Vector3(0, 0, 16*4);
+            GenTile(4, difficulty);
         }
-        else if (difficulty == 1)
+        else if (difficulty % 2 == 1)
         {
-            GenTile(6, mapIndex);
+            goWin.transform.localPosition = new Vector3(0, 0, 16*5);
+            GenTile(6, difficulty);
         }
-        else if (difficulty == 2)
+        else if (difficulty % 3 == 2)
         {
-            GenTile(8, mapIndex);
+            goWin.transform.localPosition = new Vector3(0, 0, 16*6);
+            GenTile(8, difficulty);
         }
 
     }
-    public void GenTile(int length,int mapIndex)
-    {
-        int a, b, c, d;
 
+    public void GenTile(int length, int difficulty)
+    {
         for (int i = 0; i < length; i++)
         {
-            Debug.Log("Spawn");
-            GameObject go = Instantiate(mapConfig.goMapWay[mapIndex],Vector3.zero, Quaternion.identity);
+
+            GameObject go = Instantiate(mapConfig.goMapWay[0], Vector3.zero, Quaternion.identity);
             go.transform.SetParent(goMainWay.transform);
             go.transform.localPosition = new Vector3(0, 0, i * 16);
+            int bigObstacleIndex = Random.Range(0, mapConfig.lsMapElement[0].lsObstacles.Count);
+            GameObject goObsBig = Instantiate(mapConfig.lsMapElement[0].lsObstacles[bigObstacleIndex], Vector3.zero, Quaternion.identity);
+            if (i == 0)
+            {
+                goObsBig.transform.SetParent(go.transform);
+                goObsBig.transform.localPosition = Vector3.zero;
+            }
+            else
+            {
+                goObsBig.transform.SetParent(go.transform);
+                goObsBig.transform.localPosition = new Vector3(Random.Range(-6f, 6f), 0, Random.Range(-6f, 6f));
+            }
 
-            //spawn obstacle
-            a = Random.Range(0, mapConfig.lsMapElement[mapIndex].lsObstacles.Count);
-            b = Random.Range(0, mapConfig.lsMapElement[mapIndex].lsObstaclesSmall.Count);
-            c = Random.Range(0, mapConfig.lsMapElement[mapIndex].lsTransformBig.Count);
-            d = Random.Range(0, mapConfig.lsMapElement[mapIndex].lsTransformSmall.Count);
+            List<Vector3> lsPos = new List<Vector3> { goObsBig.transform.localPosition };
 
-            GameObject goObsBig = Instantiate(mapConfig.lsMapElement[mapIndex].lsObstacles[a], Vector3.zero, Quaternion.identity);
-            goObsBig.transform.SetParent(go.transform);
-            goObsBig.transform.localPosition = mapConfig.lsMapElement[mapIndex].lsTransformBig[c];
+            Vector3 posNew;
+            for (int count = 0; count <= difficulty; count++)
+            {
+                int smallObstacleIndex = Random.Range(0, mapConfig.lsMapElement[0].lsObstaclesSmall.Count);
+                GameObject goObsSmall = Instantiate(mapConfig.lsMapElement[0].lsObstaclesSmall[smallObstacleIndex], Vector3.zero, Quaternion.identity);
+                goObsSmall.transform.SetParent(go.transform);
 
+                
+                do
+                {
+                    posNew = new Vector3(Random.Range(-8f, 8f), 0, Random.Range(-8f, 8f));
+                } while (!IsPositionValid(posNew, lsPos, 3f));
 
-            GameObject goObsSmall = Instantiate(mapConfig.lsMapElement[mapIndex].lsObstaclesSmall[b], Vector3.zero, Quaternion.identity);
-            goObsSmall.transform.SetParent(go.transform);
-            goObsSmall.transform.localPosition = mapConfig.lsMapElement[mapIndex].lsTransformSmall[d];
-
+                goObsSmall.transform.localPosition = posNew;
+                lsPos.Add(posNew);
+                lsMap.Add(goObsSmall);
+            }
+            if (i>=4)
+            {
+                do
+                {
+                    posNew = new Vector3(Random.Range(-8f, 8f), 0, Random.Range(-8f, 8f));
+                } while (!IsPositionValid(posNew, lsPos, 3f));
+                posNew.z = lsV3PosSpawn[lsV3PosSpawn.Count-1].z+12;
+                lsV3PosSpawn.Add(posNew);
+            }
+            
+           
             lsMap.Add(go);
             lsMap.Add(goObsBig);
-            lsMap.Add(goObsSmall);
-
         }
+        StartCoroutine(SpawnAnimals());
     }
+
+
+    private bool IsPositionValid(Vector3 posNew, List<Vector3> existingPos, float minDis)
+    {
+        foreach (var pos in existingPos)
+        {
+            if (Vector3.Distance(pos, posNew) < minDis)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

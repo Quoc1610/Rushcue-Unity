@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class AnimalInfo
 {
@@ -52,11 +53,11 @@ public class AnimalManager
             animalInfoList[i].Move(PlayerManager.Instance().transform,i);
         }
     }
-    public void SpawnAnimal(int a,Transform posSpawn)
+    public void SpawnAnimal(int a,Vector3 posSpawn)
     {
        
         Transform animal = GameObject.Instantiate(animalTransform,
-           posSpawn.position, Quaternion.identity);
+           posSpawn , Quaternion.identity);
         animalInfoList.Add(new AnimalInfo(animal.transform));
     }
 }
