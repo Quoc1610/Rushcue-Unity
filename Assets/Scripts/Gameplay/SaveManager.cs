@@ -11,7 +11,14 @@ public static class SaveManager
         string jsonData = JsonUtility.ToJson(data);
         File.WriteAllText(path, jsonData);
     }
-
+    public static void ClearData()
+    {
+        string path = Application.persistentDataPath + "/save.json";
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
+    }
     public static SaveData LoadData()
     {
         string path = Application.persistentDataPath + "/save.json";

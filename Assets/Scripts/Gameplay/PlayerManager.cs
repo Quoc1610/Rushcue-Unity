@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
 
     public float speed = 2f;
     public float disRun = 0;
-    [SerializeField] private float maxSpeed = 5f;
+    public float maxSpeed = 5f;
     [SerializeField] private float rotationSpeed = 50f;
     public Vector3 posStart;
     [SerializeField] private Animator animator;
@@ -63,7 +63,7 @@ public class PlayerManager : MonoBehaviour
         if (joystick.Direction != Vector2.zero)
         {
             //maxSpeed = 10f;
-            maxSpeed= .18f * 3 + .18f * UIManager.Instance().saveData.speedLvl;
+            maxSpeed= .18f * 3 + (.18f * UIManager.Instance().saveData.speedLvl)/2;
             direction = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
             direction.Normalize();
             controller.Move(direction * speed * Time.deltaTime);
@@ -112,15 +112,17 @@ public class PlayerManager : MonoBehaviour
             
             UIManager.Instance().OnPause(1);
             disRun = Vector3.Distance(transform.position, posStart)*100/18;
-            Debug.Log(disRun);
+            UIManager.Instance().uiGameplay.joystick.OnPointerUp(null);
             UIManager.Instance().uiResult.OnSetUp(0,UIManager.Instance().CalculateCoin());
             UIManager.Instance().uiResult.gameObject.SetActive(true);
 
         }
         if (other.gameObject.tag == "Win")
         {
-
+            disRun = Vector3.Distance(transform.position, posStart) * 100 / 18;
             UIManager.Instance().OnPause(1);
+            UIManager.Instance().uiGameplay.joystick.OnPointerUp(null);
+            //UIManager.Instance().uiGameplay.gameObject.SetActive(false);
             UIManager.Instance().uiResult.OnSetUp(1, UIManager.Instance().CalculateCoin());
             UIManager.Instance().uiResult.gameObject.SetActive(true);
         }

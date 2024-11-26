@@ -27,13 +27,14 @@ public class UIResult : MonoBehaviour
     }
     public void OnDone_Clicked()
     {
-        UIManager.Instance().OnPause(0);
         //UIManager.Instance().OnScene("UI");
-        UIManager.Instance().uiMainMenu.gameObject.SetActive(true);
-        UIManager.Instance().uiMainMenu.OnSetUp();
+        
+        UIManager.Instance().uiGameplay.gameObject.SetActive(false);
         UIManager.Instance().OnReloadScene();
         UIManager.Instance().saveData.coins += int.Parse(txtCoins.text);
         SaveManager.SaveData(UIManager.Instance().saveData);
+        UIManager.Instance().uiMainMenu.gameObject.SetActive(true);
+        UIManager.Instance().uiMainMenu.OnSetUp();
         this.gameObject.SetActive(false);
     }
 }

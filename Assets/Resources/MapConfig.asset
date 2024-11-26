@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3510658cd7a28b848895d6a11e757cb7, type: 3}
+  m_Name: MapConfig
+  m_EditorClassIdentifier: 
+  goMapWay:
+  - {fileID: 8309896732484912039, guid: 440ad71cd8a924e439ad16e308f37e8e, type: 3}
+  lsMapElement:
+  - lsObstacles:
+    - {fileID: 3294435270369087206, guid: 7982fc080c354a942b3561f445489e11, type: 3}
+    - {fileID: 1220109061593607075, guid: e1d32747d09c9db4ebaeb409cbf1a9d1, type: 3}
+    - {fileID: 4122504736164611588, guid: 9dce1e39a16300c449250e82a5c0de0e, type: 3}
+    - {fileID: 8207002681667545729, guid: ea409d27120635c428dc888c789a3371, type: 3}
+    - {fileID: 2102204373591914974, guid: c113180fba5d60d419f8e84af96f8306, type: 3}
+    - {fileID: 471194163132240774, guid: 9117416421694c64e8c7fed0ff6e6a6d, type: 3}
+    lsObstaclesSmall:
+    - {fileID: 1375538243891314521, guid: 7f3cebc0c3df85a43bc23aefd5b33eb9, type: 3}
+    - {fileID: 5624089964038811640, guid: 004356de00d6ae4498b15749c93c0a78, type: 3}
+    - {fileID: 5408409271039371814, guid: d495f8b7d95ee4b4b96e4b1d3fafbff1, type: 3}
+    - {fileID: 1695010337599748473, guid: a329f58f380e2084aa3fd8169e15bae9, type: 3}
+    - {fileID: 3507299731135075979, guid: 97b1d964c7b504c4eaa0585020686a55, type: 3}
+    lsTransformBig:
+    - {x: 0, y: 0, z: 0}
+    - {x: 6, y: 0, z: 2}
+    - {x: -4, y: 0, z: 4}
+    lsTransformSmall:
+    - {x: -4, y: 0, z: 4}
+    - {x: -6, y: 0, z: -4}
+    - {x: 6, y: 0, z: -4}
+    difficulty: 0
+  - lsObstacles:
+    - {fileID: 3294435270369087206, guid: 7982fc080c354a942b3561f445489e11, type: 3}
+    - {fileID: 1220109061593607075, guid: e1d32747d09c9db4ebaeb409cbf1a9d1, type: 3}
+    - {fileID: 4122504736164611588, guid: 9dce1e39a16300c449250e82a5c0de0e, type: 3}
+    - {fileID: 8207002681667545729, guid: ea409d27120635c428dc888c789a3371, type: 3}
+    - {fileID: 2102204373591914974, guid: c113180fba5d60d419f8e84af96f8306, type: 3}
+    - {fileID: 471194163132240774, guid: 9117416421694c64e8c7fed0ff6e6a6d, type: 3}
+    lsObstaclesSmall:
+    - {fileID: 1375538243891314521, guid: 7f3cebc0c3df85a43bc23aefd5b33eb9, type: 3}
+    - {fileID: 5624089964038811640, guid: 004356de00d6ae4498b15749c93c0a78, type: 3}
+    - {fileID: 5408409271039371814, guid: d495f8b7d95ee4b4b96e4b1d3fafbff1, type: 3}
+    - {fileID: 1695010337599748473, guid: a329f58f380e2084aa3fd8169e15bae9, type: 3}
+    - {fileID: 3507299731135075979, guid: 97b1d964c7b504c4eaa0585020686a55, type: 3}
+    lsTransformBig:
+    - {x: 0, y: 0, z: 0}
+    - {x: 6, y: 0, z: 2}
+    - {x: -4, y: 0, z: 4}
+    lsTransformSmall:
+    - {x: -4, y: 0, z: 4}
+    - {x: -6, y: 0, z: -4}
+    - {x: 6, y: 0, z: -4}
+    difficulty: 0

@@ -922,8 +922,8 @@ RectTransform:
   m_Children:
   - {fileID: 1690643679}
   - {fileID: 981031372}
-  - {fileID: 1660462328}
   - {fileID: 842109239}
+  - {fileID: 1660462328}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1246,7 +1246,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842109238}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1651,6 +1651,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 1652868049}
+  btnClearData: {fileID: 1145451160}
+--- !u!114 &993718283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8415264474197153912, guid: d0da399f84e50fe4c951809364f60056, type: 3}
+  m_PrefabInstance: {fileID: 3873014365001398386}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1035549287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,7 +1847,7 @@ GameObject:
   - component: {fileID: 1145451161}
   - component: {fileID: 1145451160}
   m_Layer: 5
-  m_Name: Button
+  m_Name: btnClear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1904,7 +1916,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1145451161}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 981031375}
+        m_TargetAssemblyTypeName: UIGameplay, Assembly-CSharp
+        m_MethodName: OnClearData_Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1145451161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2709,9 +2733,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtCoin: {fileID: 97516350}
   txtPrice: {fileID: 304127111}
+  txtLvlSpeed: {fileID: 993718283}
   goCanBuy: {fileID: 677615930}
   btnPlay: {fileID: 1188494102}
   btnSpeed: {fileID: 3873014365001398388}
+  price: 0
 --- !u!1 &1747556099
 GameObject:
   m_ObjectHideFlags: 0

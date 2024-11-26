@@ -5,7 +5,7 @@ using UnityEngine;
 public class SaveData 
 {
     public int defaultCoins = 100;
-    public int defaultSpeed = 5;
+    public int defaultSpeed = 1;
     public int defaultPrice = 100;
     public bool isFirstTime = true;
     public int coins;

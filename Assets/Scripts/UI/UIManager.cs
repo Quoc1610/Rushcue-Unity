@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        SaveManager.ClearData();
     }
     private void Start()
     {
