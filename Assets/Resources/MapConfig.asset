@@ -28,14 +28,16 @@ MonoBehaviour:
     - {fileID: 5408409271039371814, guid: d495f8b7d95ee4b4b96e4b1d3fafbff1, type: 3}
     - {fileID: 1695010337599748473, guid: a329f58f380e2084aa3fd8169e15bae9, type: 3}
     - {fileID: 3507299731135075979, guid: 97b1d964c7b504c4eaa0585020686a55, type: 3}
-    lsTransformBig:
-    - {x: 0, y: 0, z: 0}
-    - {x: 6, y: 0, z: 2}
-    - {x: -4, y: 0, z: 4}
-    lsTransformSmall:
-    - {x: -4, y: 0, z: 4}
+    lsObstaclesMovable:
+    - {fileID: 1079798215001162126, guid: 343c6621129c569469a6c90cb8e5f240, type: 3}
+    - {fileID: 1079798215001162126, guid: 4f6f2a7a5cfc40f4fa2441baf120fa98, type: 3}
+    - {fileID: 1079798215001162126, guid: 4f6f2a7a5cfc40f4fa2441baf120fa98, type: 3}
+    - {fileID: 1079798215001162126, guid: 4f6f2a7a5cfc40f4fa2441baf120fa98, type: 3}
+    lsTransformMoveable:
     - {x: -6, y: 0, z: -4}
+    - {x: -6, y: 0, z: 4}
     - {x: 6, y: 0, z: -4}
+    - {x: 6, y: 0, z: 4}
     difficulty: 0
   - lsObstacles:
     - {fileID: 3294435270369087206, guid: 7982fc080c354a942b3561f445489e11, type: 3}
@@ -50,12 +52,14 @@ MonoBehaviour:
     - {fileID: 5408409271039371814, guid: d495f8b7d95ee4b4b96e4b1d3fafbff1, type: 3}
     - {fileID: 1695010337599748473, guid: a329f58f380e2084aa3fd8169e15bae9, type: 3}
     - {fileID: 3507299731135075979, guid: 97b1d964c7b504c4eaa0585020686a55, type: 3}
-    lsTransformBig:
-    - {x: 0, y: 0, z: 0}
-    - {x: 6, y: 0, z: 2}
-    - {x: -4, y: 0, z: 4}
-    lsTransformSmall:
-    - {x: -4, y: 0, z: 4}
+    lsObstaclesMovable:
+    - {fileID: 1079798215001162126, guid: 4f6f2a7a5cfc40f4fa2441baf120fa98, type: 3}
+    - {fileID: 4161634115154610621, guid: 2712dbe8a5494644f973f15c64122345, type: 3}
+    - {fileID: 1079798215001162126, guid: 343c6621129c569469a6c90cb8e5f240, type: 3}
+    - {fileID: 8106398866621765239, guid: 4164e909f7232604891b5189c09a6af0, type: 3}
+    lsTransformMoveable:
     - {x: -6, y: 0, z: -4}
+    - {x: 2, y: 0, z: -3}
     - {x: 6, y: 0, z: -4}
-    difficulty: 0
+    - {x: 4, y: 0, z: 0}
+    difficulty: 3

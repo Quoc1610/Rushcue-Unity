@@ -10,7 +10,9 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtPrice;
     [SerializeField] private TextMeshProUGUI txtLvlSpeed;
     [SerializeField] private GameObject goCanBuy;
-
+    [SerializeField] private List<Button> lsBtnLvl= new List<Button>();
+    [SerializeField] private TextMeshProUGUI txtLvl;
+    public int lvlMap;
     [SerializeField] private Button btnPlay;
     [SerializeField] private Button btnSpeed;
     public int price;
@@ -19,9 +21,30 @@ public class UIMainMenu : MonoBehaviour
     {
         ChangeText();
         CheckIfCanBuy();
+        lvlMap = 1;
+        txtLvl.text = "Map " + lvlMap;
         btnPlay.onClick.AddListener(OnPlay_Clicked);
         btnSpeed.onClick.AddListener(OnSpeed_Clicked);
 
+    }
+    public void OnLvl_Clicked(int index)
+    {
+        if (index == 0)
+        {
+            if (lvlMap > 1)
+            {
+                lvlMap--;
+                txtLvl.text = "Map " + lvlMap;
+            }
+        }
+        else
+        {
+            if (lvlMap <= 10)
+            {
+                lvlMap++;
+                txtLvl.text = "Map " + lvlMap;
+            }
+        }
     }
     public void ChangeText()
     {

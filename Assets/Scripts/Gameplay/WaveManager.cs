@@ -22,9 +22,9 @@ public class WaveManager
 {
     public Transform waveTransform;
     public WaveInfo waveInfo;
-    public void SetupTransform(Transform waveGO)
+    public void SetupTransform(Transform waveGO,float speed)
     {
-        float speed = 10f / 5.7f;
+        
         waveInfo = new WaveInfo(speed);
         this.waveTransform = waveGO;
         

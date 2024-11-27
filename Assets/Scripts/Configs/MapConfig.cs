@@ -15,8 +15,8 @@ public class MapElement
 {
     public List<GameObject> lsObstacles;
     public List<GameObject> lsObstaclesSmall;
-    public List<Vector3> lsTransformBig;
-    public List<Vector3> lsTransformSmall;
+    public List<GameObject> lsObstaclesMovable;
+    public List<Vector3> lsTransformMoveable;
 
     public int difficulty;
 }

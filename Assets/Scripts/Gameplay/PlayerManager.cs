@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject scanner;
     public float distance;
     private bool isInsideTrigger = false;
+    public GameObject goArrow;
 
 
     public static PlayerManager Instance()
@@ -62,17 +63,16 @@ public class PlayerManager : MonoBehaviour
     {
         if (joystick.Direction != Vector2.zero)
         {
-            //maxSpeed = 10f;
-            maxSpeed= .18f * 3 + (.18f * UIManager.Instance().saveData.speedLvl)/2;
+            maxSpeed=3.5f;
+            //maxSpeed = .18f * 3 + (.18f * UIManager.Instance().saveData.speedLvl)/2;
             direction = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
             direction.Normalize();
             controller.Move(direction * speed * Time.deltaTime);
-            if (speed < maxSpeed)
-            {
+            
 
-                speed += 0.1f;
-                ChangeAnim(speed / maxSpeed);
-            }
+            speed=maxSpeed;
+            ChangeAnim(speed / maxSpeed);
+    
 
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
@@ -80,12 +80,10 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            if (speed > 0)
-            {
-                speed -= 0.1f;
-                controller.Move(direction * speed * Time.deltaTime);
-                ChangeAnim(speed / maxSpeed);
-            }
+
+            speed = 0f;
+            controller.Move(direction * speed * Time.deltaTime);
+            ChangeAnim(speed / maxSpeed);
 
         }
     }
@@ -129,21 +127,14 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-
-    public void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Animal")
-        {
-
-        }
-    }
     public void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Animal")
         {
-            StopCoroutine(CheckOneSecond(other));
             scanner.SetActive(false);
             isInsideTrigger = false;
+            StopCoroutine(CheckOneSecond(other));
+            
         }
     }
 }
