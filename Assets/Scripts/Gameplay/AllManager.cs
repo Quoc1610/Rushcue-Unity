@@ -44,8 +44,8 @@ public class AllManager : MonoBehaviour
 
         difficulty=UIManager.Instance().uiMainMenu.lvlMap-1;
 
-        //float speed = 10f / 5.7f*(1+4*difficulty/9);
-        float speed = 1f;
+        float speed = 10f / 5.7f *(1+4*difficulty/9);
+        //float speed = 1f;
         this.animalManager = new AnimalManager();
         this.waveManager = new WaveManager();
 
@@ -116,7 +116,7 @@ public class AllManager : MonoBehaviour
         if (lsMovable.Count!=0)
         {
             if (Vector3.Distance(PlayerManager.Instance().transform.position,
-                lsMovable[moveMovable].transform.position)<=16f)
+                lsMovable[moveMovable].transform.position)<=10f)
             {
             Debug.Log("Move");
             Debug.Log(lsMovable[moveMovable].name);
