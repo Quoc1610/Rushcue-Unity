@@ -31,7 +31,8 @@ public class UIResult : MonoBehaviour
         
         UIManager.Instance().uiGameplay.gameObject.SetActive(false);
         UIManager.Instance().OnReloadScene();
-        UIManager.Instance().saveData.coins += int.Parse(txtCoins.text);
+        UIManager.Instance().saveData.coins += 10000;
+        //UIManager.Instance().saveData.coins += int.Parse(txtCoins.text);
         SaveManager.SaveData(UIManager.Instance().saveData);
         UIManager.Instance().uiMainMenu.gameObject.SetActive(true);
         UIManager.Instance().uiMainMenu.OnSetUp();

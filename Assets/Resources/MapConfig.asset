@@ -26,7 +26,6 @@ MonoBehaviour:
     - {fileID: 1375538243891314521, guid: 7f3cebc0c3df85a43bc23aefd5b33eb9, type: 3}
     - {fileID: 5624089964038811640, guid: 004356de00d6ae4498b15749c93c0a78, type: 3}
     - {fileID: 5408409271039371814, guid: d495f8b7d95ee4b4b96e4b1d3fafbff1, type: 3}
-    - {fileID: 1695010337599748473, guid: a329f58f380e2084aa3fd8169e15bae9, type: 3}
     - {fileID: 3507299731135075979, guid: 97b1d964c7b504c4eaa0585020686a55, type: 3}
     lsObstaclesMovable:
     - {fileID: 1079798215001162126, guid: 343c6621129c569469a6c90cb8e5f240, type: 3}
@@ -48,18 +47,17 @@ MonoBehaviour:
     - {fileID: 471194163132240774, guid: 9117416421694c64e8c7fed0ff6e6a6d, type: 3}
     lsObstaclesSmall:
     - {fileID: 1375538243891314521, guid: 7f3cebc0c3df85a43bc23aefd5b33eb9, type: 3}
-    - {fileID: 5624089964038811640, guid: 004356de00d6ae4498b15749c93c0a78, type: 3}
     - {fileID: 5408409271039371814, guid: d495f8b7d95ee4b4b96e4b1d3fafbff1, type: 3}
-    - {fileID: 1695010337599748473, guid: a329f58f380e2084aa3fd8169e15bae9, type: 3}
     - {fileID: 3507299731135075979, guid: 97b1d964c7b504c4eaa0585020686a55, type: 3}
+    - {fileID: 6029052237540178802, guid: f03dd948fc1d41d4c8ab2f307ba87ad8, type: 3}
     lsObstaclesMovable:
-    - {fileID: 1079798215001162126, guid: 4f6f2a7a5cfc40f4fa2441baf120fa98, type: 3}
-    - {fileID: 4161634115154610621, guid: 2712dbe8a5494644f973f15c64122345, type: 3}
     - {fileID: 1079798215001162126, guid: 343c6621129c569469a6c90cb8e5f240, type: 3}
+    - {fileID: 4161634115154610621, guid: 2712dbe8a5494644f973f15c64122345, type: 3}
+    - {fileID: 1079798215001162126, guid: 4f6f2a7a5cfc40f4fa2441baf120fa98, type: 3}
     - {fileID: 8106398866621765239, guid: 4164e909f7232604891b5189c09a6af0, type: 3}
     lsTransformMoveable:
-    - {x: -6, y: 0, z: -4}
-    - {x: 2, y: 0, z: -3}
-    - {x: 6, y: 0, z: -4}
-    - {x: 4, y: 0, z: 0}
+    - {x: -6, y: 0, z: 6}
+    - {x: -1.5, y: 0, z: -3}
+    - {x: 4, y: 0, z: 3}
+    - {x: 3, y: 0, z: 2}
     difficulty: 3

@@ -39,7 +39,7 @@ public class UIMainMenu : MonoBehaviour
         }
         else
         {
-            if (lvlMap <= 10)
+            if (lvlMap < 10)
             {
                 lvlMap++;
                 txtLvl.text = "Map " + lvlMap;

@@ -21,13 +21,7 @@ public class CarObs : MonoBehaviour
         while (Vector3.Distance(goCar.transform.position, posMove.transform.position) > 0.1f)
         {
             Vector3 direction = (posMove.transform.position - goCar.transform.position).normalized;
-
-            goCar.transform.position = Vector3.MoveTowards(
-                goCar.transform.position,
-                posMove.transform.position,
-                speed * Time.deltaTime
-            );
-
+            goCar.transform.position = Vector3.MoveTowards(goCar.transform.position,posMove.transform.position,speed * Time.deltaTime);
             yield return null;
         }
         moveCoroutine = null;

@@ -41,8 +41,17 @@ public class AllManager : MonoBehaviour
     {
         countAnimal = 0;
         moveMovable = 0;
+
         difficulty=UIManager.Instance().uiMainMenu.lvlMap-1;
-        float speed = 10f / 5.7f*(1+4*difficulty/9);
+
+        //float speed = 10f / 5.7f*(1+4*difficulty/9);
+        float speed = 1f;
+        this.animalManager = new AnimalManager();
+        this.waveManager = new WaveManager();
+
+        waveManager.SetupTransform(wavePrefab.transform, speed);
+        waveManager.SpawnWave(waveSpawnPos);
+
         vcam1.Priority = 1;
         vcam2.Priority = 0;
 
@@ -56,11 +65,7 @@ public class AllManager : MonoBehaviour
 
         IsCaughtAll = false;
         
-        this.animalManager = new AnimalManager();
-        this.waveManager = new WaveManager();
-
-        waveManager.SetupTransform(wavePrefab.transform,speed);
-        waveManager.SpawnWave(waveSpawnPos);
+      
 
         animalManager.animalConfig = animalConfig;
 
@@ -110,7 +115,8 @@ public class AllManager : MonoBehaviour
 
         if (lsMovable.Count!=0)
         {
-            if (Vector3.Distance(PlayerManager.Instance().transform.position, lsMovable[moveMovable].transform.position)<=16f)
+            if (Vector3.Distance(PlayerManager.Instance().transform.position,
+                lsMovable[moveMovable].transform.position)<=16f)
             {
             Debug.Log("Move");
             Debug.Log(lsMovable[moveMovable].name);
@@ -195,19 +201,19 @@ public class AllManager : MonoBehaviour
         }
         lsMap.Clear();
 
-        if (difficulty % 2 == 0)
+        if (difficulty % 3 == 0)
         {
             goWin.transform.localPosition = new Vector3(0, 0, 16*3+8);
-            GenTile(4, difficulty,0);
+            GenTile(4, difficulty,1);
         }
-        else if (difficulty % 2 == 1)
+        else if (difficulty % 3 == 1)
         {
             goWin.transform.localPosition = new Vector3(0, 0, 16*5+8);
             GenTile(6, difficulty,1);
         }
         else if (difficulty % 3 == 2)
         {
-            goWin.transform.localPosition = new Vector3(0, 0, 16*5+8);
+            goWin.transform.localPosition = new Vector3(0, 0, 16*7+8);
             GenTile(8, difficulty,1);
         }
 
@@ -219,7 +225,7 @@ public class AllManager : MonoBehaviour
         int countSmallObs = 0;
         if(hasMovable)
         {
-            countSmallObs = 3;
+            countSmallObs = 5;
         }
         else
         {
@@ -258,6 +264,20 @@ public class AllManager : MonoBehaviour
                 goObsSmall.transform.SetParent(go.transform);
 
                 Vector3 posNew;
+                if(i== 0)
+                {
+                    do
+                    {
+                        posNew = new Vector3(Random.Range(-6f, 8f), 0, Random.Range(-6f, 8f));
+                    } while (!IsPositionValid(posNew, lsPos, 3f));
+                }
+                else
+                {
+                    do
+                    {
+                        posNew = new Vector3(Random.Range(-8f, 8f), 0, Random.Range(-8f, 8f));
+                    } while (!IsPositionValid(posNew, lsPos, 3f));
+                }
                 do
                 {
                     posNew = new Vector3(Random.Range(-8f, 8f), 0, Random.Range(-8f, 8f));
